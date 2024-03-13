@@ -21,7 +21,7 @@ def list_prof(lst):
                    'специалист по радиационной защите', 'астрогеолог', 'гляциолог',
                    'инженер жизнеобеспечения', 'метеоролог', 'оператор марсохода', 'киберинженер',
                    'штурман', 'пилот дронов']
-    return render_template('list_prof.html', professions=professions, list=list)
+    return render_template('list_prof.html', professions=professions, list=lst)
 
 
 if __name__ == '__main__':
