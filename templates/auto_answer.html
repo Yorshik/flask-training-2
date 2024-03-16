@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p>Фамилия: {{ dct['surname'] }}</p>
+  <p>Имя: {{ dct['name'] }}</p>
+  <p>Образование: {{ dct['education'] }}</p>
+  <p>Профессия: {{ dct['profession'] }}</p>
+  <p>Пол: {{ dct['sex'] }}</p>
+  <p>Мотивация: {{ dct['motivation'] }}</p>
+  <p>Готовы остаться на Марсе? {{ dct['accept'] }}</p>
+{% endblock %}
