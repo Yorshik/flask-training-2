@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
@@ -39,7 +41,7 @@ def list_prof(lst):
 @app.route('/distribution')
 def distribution():
     astronauts = {
-        'astronauts': [
+        'astronauts.json': [
             'Ридли Скотт',
             "Энди Уир",
             "Марк Уотни",
@@ -57,6 +59,14 @@ def login():
     if form.validate_on_submit():
         return 'Доступ разрешен'
     return render_template('login.html', form=form)
+
+
+@app.route('/member')
+def member():
+    with open('templates/astronauts.json', encoding='UTF-8') as js:
+        members = json.load(js)
+    print(len(members['crew_members']))
+    return render_template('member.html', crew_members=members)
 
 
 if __name__ == '__main__':

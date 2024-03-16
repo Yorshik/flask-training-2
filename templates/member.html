@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content%}
+  {% set member = crew_members['crew_members'] | random %}
+  <h1>{{ member.name }}</h1>
+  <img src="{{ member.img }}" alt="Photo of {{ member.name }}">
+  <p>Специальности: {{ member.specialities }}</p>
+{% endblock %}
