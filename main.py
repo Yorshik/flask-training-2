@@ -68,5 +68,10 @@ def member():
     return render_template('member.html', crew_members=members)
 
 
+@app.route('/table_param/<sex>/<int:age>')
+def table_param(sex, age):
+    return render_template('table_param.html', sex=sex, age=age)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
