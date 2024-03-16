@@ -1,6 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mysecretkey'
+
+
+class LoginForm(FlaskForm):
+    captain_id = StringField('Captain`s id', validators=[DataRequired()])
+    captain_pass = PasswordField('Captain`s password', validators=[DataRequired()])
+    astronaut_id = StringField('Astronaut`s id', validators=[DataRequired()])
+    astronaut_pass = PasswordField('Astronaut`s password', validators=[DataRequired()])
+    submit = SubmitField('Доступ')
 
 
 @app.route('/<title>')
@@ -37,6 +49,14 @@ def distribution():
         ]
     }
     return render_template('distribution.html', astronauts=astronauts)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return 'Доступ разрешен'
+    return render_template('login.html', form=form)
 
 
 if __name__ == '__main__':
