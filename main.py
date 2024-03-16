@@ -65,7 +65,6 @@ def login():
 def member():
     with open('templates/astronauts.json', encoding='UTF-8') as js:
         members = json.load(js)
-    print(len(members['crew_members']))
     return render_template('member.html', crew_members=members)
 
 
