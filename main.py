@@ -1,4 +1,6 @@
+import fnmatch
 import json
+import os
 
 from flask import Flask, render_template, request, url_for, redirect
 from flask_wtf import FlaskForm
@@ -7,6 +9,7 @@ from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
+app.debug = True
 
 
 class LoginForm(FlaskForm):
@@ -208,6 +211,25 @@ def astronaut_selection():
 @app.route('/auto_answer')
 def answer():
     return render_template('auto_answer.html', dct=dct)
+
+
+@app.route('/gallery', methods=["GET", 'POST'])
+def gallery():
+    if request.method == 'POST':
+        lst = []
+        for name in os.listdir('static/img'):
+            if fnmatch.fnmatch(name, 'mars*.png'):
+                lst.append(name)
+        lst.sort()
+        last = lst[-1]
+        new = last[:4] + str(int(last[4]) + 1) + last[5:]
+        file = request.files['add_file']
+        print(file.save(f'static/img/{new}'))
+    matches = 0
+    for name in os.listdir('static/img'):
+        if fnmatch.fnmatch(name, 'mars*.png'):
+            matches += 1
+    return render_template('gallery.html', n=matches)
 
 
 dct = {}
