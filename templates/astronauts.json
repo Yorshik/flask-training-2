@@ -3,17 +3,17 @@
     {
       "name": "Энди Уир",
       "img": "static/img/img1.png",
-      "specialities": "Астрогеолог, специалист по радиационной защите"
+      "specialities": ["Астрогеолог", "специалист по радиационной защите"]
     },
     {
       "name": "Котэ",
       "img": "static/img/kote.jpeg",
-      "specialities": "Поддержка, специалист по мяуканью"
+      "specialities": ["Поддержка", "специалист по мяуканью"]
     },
     {
       "name": "Ivan Petrov",
       "img": "static/img/img2.jpeg",
-      "specialities": "Какой-то чел, что то делает на корабле"
+      "specialities": ["Какой-то чел", "что то делает на корабле"]
     }
   ]
 }

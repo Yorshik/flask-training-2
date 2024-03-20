@@ -16,3 +16,13 @@ h4 {
 p {
     text-size: 16pt;
 }
+
+.add_bg_image {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url("/../../static/img/mMars-2-7.png");
+}
+.text {
+    padding-left: 150px;
+    font-size: 60px;
+}
